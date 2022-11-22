@@ -1,0 +1,88 @@
+﻿<Page x:Class="courseworkDemo.View.AdministrationPage.MainAdministratorPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:courseworkDemo.View.AdministrationPage"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="500"
+      d:DesignWidth="1000"
+      FontFamily="Consolas"
+      mc:Ignorable="d"
+      Title="MainAdministratorPage">
+
+    <Grid>
+        <Border
+            Width="980"
+            Height="480"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="#FF4279A4"
+            Effect="{StaticResource MaterialDesignElevationShadow16}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Menu
+                    Grid.Row="0"
+                    Background="#FF2779AD"
+                    Foreground="White"
+                    IsMainMenu="True"
+                    Style="{DynamicResource MaterialDesignMenu}">
+                    <Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <DockPanel HorizontalAlignment="Stretch" />
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>
+                    <MenuItem
+                        x:Name="MenuItemUser"
+                        HorizontalAlignment="Center"
+                        Click="MenuItemUser_Click"
+                        Cursor="Hand"
+                        Effect="{StaticResource MaterialDesignElevationShadow16}"
+                        Header="Информация о пользователях">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Foreground="White"
+                                Kind="People" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        x:Name="MenuItemOrders"
+                        Click="MenuItemOrders_Click"
+                        HorizontalAlignment="Left"
+                        Cursor="Hand"
+                        Effect="{StaticResource MaterialDesignElevationShadow16}"
+                        Header="Информация о заказах">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Foreground="White"
+                                Kind="OrderBoolAscending" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem
+                        x:Name="MenuItemProducts"
+                        HorizontalAlignment="Left"
+                        Click="MenuItemProduct_Click"
+                        Cursor="Hand"
+                        Effect="{StaticResource MaterialDesignElevationShadow16}"
+                        Header="Добавить товар">
+                        <MenuItem.Icon>
+                            <materialDesign:PackIcon
+                                Width="20"
+                                Height="20"
+                                Foreground="White"
+                                Kind="Package" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </Menu>
+                <Grid x:Name="GridContentLoad" Grid.Row="1" />
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

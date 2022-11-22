@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b8dd01801ed7459b9121ca4c04a180a9" Name="Diagram1">
+        <EntityTypeShape EntityType="courseworkDBModel.Order" Width="1.5" PointX="6.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.Product" Width="1.5" PointX="9.125" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.Role" Width="1.5" PointX="0.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.User" Width="1.5" PointX="4" PointY="0.625" IsExpanded="true" />
+        <AssociationConnector Association="courseworkDBModel.FK_Orders_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="courseworkDBModel.FK_Orders_User" ManuallyRouted="false" />
+        <AssociationConnector Association="courseworkDBModel.FK_User_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

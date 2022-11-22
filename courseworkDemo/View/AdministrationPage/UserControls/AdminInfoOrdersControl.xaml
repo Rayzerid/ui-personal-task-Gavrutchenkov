@@ -11,6 +11,7 @@
     <Grid>
         <StackPanel
             Margin="5"
+            Grid.Row="25"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
             <DataGrid
@@ -41,32 +42,47 @@
                         Width="Auto"
                         Binding="{Binding OrdersID}"
                         FontSize="15"
-                        Header="Номер заказа"
-                        Foreground="White"/>
+                        Foreground="White">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Номер заказа" Foreground="White"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding User.Login}"
                         FontSize="15"
-                        Header="Login заказчика" 
-                        Foreground="White"/>
+                        Foreground="White">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Логин заказчика" Foreground="White"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Product.ProductsName}"
-                        FontSize="15"
-                        Header="Название заказаных продуктов" 
-                        Foreground="White"/>
+                        FontSize="15" 
+                        Foreground="White">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Название заказаных продуктов" Foreground="White"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
                         Binding="{Binding Product.ProductsPrice}"
                         FontSize="15"
-                        Header="Стоимость" 
-                        Foreground="White"/>
+                        Foreground="White">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Стоимость" Foreground="White"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
                         FontSize="15"
-                        Binding="{Binding Times}"
-                        Header="Дата заказа" 
-                        Foreground="White"/>
+                        Binding="{Binding Times}" 
+                        Foreground="White">
+                        <DataGridTextColumn.Header>
+                            <TextBlock Text="Дата заказа" Foreground="White"/>
+                        </DataGridTextColumn.Header>
+                    </DataGridTextColumn>
                     <DataGridTemplateColumn>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>

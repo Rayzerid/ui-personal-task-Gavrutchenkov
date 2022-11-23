@@ -1,4 +1,6 @@
-﻿using System;
+﻿using courseworkDemo.Core;
+using courseworkDemo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,23 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
         public AdminInfoUserControl()
         {
             InitializeComponent();
+            DataUserInfo.ItemsSource = FrameNavigate.DB.Users.OrderBy(u => u.Login).ToList();
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int idUser = (DataUserInfo.SelectedItem as User).UserID;
+            var result = MessageBox.Show("Хотите удалить пользователя?",
+                                         "Системное сообщение",
+                                         MessageBoxButton.YesNo,
+                                         MessageBoxImage.Question);
+            if(result == MessageBoxResult.Yes)
+            {
+                User user = (from u in FrameNavigate.DB.Users where u.UserID == idUser select u).SingleOrDefault();
+                FrameNavigate.DB.Users.Remove(user);
+                FrameNavigate.DB.SaveChanges();
+                DataUserInfo.ItemsSource = FrameNavigate.DB.Users.OrderBy(u => u.Login).ToList();
+            }
         }
     }
 }

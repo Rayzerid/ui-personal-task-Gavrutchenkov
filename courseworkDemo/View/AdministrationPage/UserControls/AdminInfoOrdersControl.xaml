@@ -18,7 +18,7 @@
                 x:Name="DataOrderInfo"
                 Width="950"
                 Height="450"
-                AlternatingRowBackground="#F0fff0"
+                AlternatingRowBackground="#FF091684"
                 AutoGenerateColumns="False"
                 CanUserAddRows="False"
                 CanUserDeleteRows="False"

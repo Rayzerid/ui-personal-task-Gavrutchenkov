@@ -34,7 +34,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            int idProduct = ((sender as Button)?.DataContext as ProductsContain).ProductsID;
+            int idProduct = (DataOrderInfo.SelectedItem as ProductsContain).ProductsID;
+            int idUser = (DataOrderInfo.SelectedItem as ProductsContain).Order.UserID;
             int CountProductContain = (FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID)).ToList().Count;
             var resultDeleteOneOrder = MessageBox.Show("Хотите удалить товар из корзины?",
                                         "Системное сообщение",
@@ -42,8 +43,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                                         MessageBoxImage.Question);
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain == 1)
             {
-                Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
+                Order order = (from u in FrameNavigate.DB.Orders where u.UserID == idUser select u).SingleOrDefault();
+                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.Orders.Remove(order);
                 FrameNavigate.DB.SaveChanges();
@@ -51,7 +52,7 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
             }
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain != 1)
             {
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
+                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.SaveChanges();
                 DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
@@ -60,7 +61,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
 
         private void BtnAccept_Click(object sender, RoutedEventArgs e)
         {
-            int idProduct = ((sender as Button)?.DataContext as ProductsContain).ProductsID;
+            int idProduct = (DataOrderInfo.SelectedItem as ProductsContain).ProductsID;
+            int idUser = (DataOrderInfo.SelectedItem as ProductsContain).Order.UserID;
             int CountProductContain = (FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID)).ToList().Count;
             var resultDeleteOneOrder = MessageBox.Show("Хотите удалить товар из корзины?",
                                         "Системное сообщение",
@@ -68,8 +70,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                                         MessageBoxImage.Question);
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain == 1)
             {
-                Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
+                Order order = (from u in FrameNavigate.DB.Orders where u.UserID == idUser select u).SingleOrDefault();
+                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.Orders.Remove(order);
                 FrameNavigate.DB.SaveChanges();
@@ -77,7 +79,7 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
             }
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain != 1)
             {
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
+                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.SaveChanges();
                 DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();

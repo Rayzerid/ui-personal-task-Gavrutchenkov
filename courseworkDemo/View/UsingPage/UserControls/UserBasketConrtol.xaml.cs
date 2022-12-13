@@ -1,5 +1,6 @@
 ﻿using courseworkDemo.Core;
 using courseworkDemo.Model;
+using courseworkDemo.View.AdministrationPage.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,21 +60,31 @@ namespace courseworkDemo.View.UsingPage.UserControls
 
         private void BtnPay_Click(object sender, RoutedEventArgs e)
         {
-            int idProduct = ((sender as Button)?.DataContext as ProductsContain).ProductsID;
-            int CountOrders = (FrameNavigate.DB.Orders.OrderBy(u => u.OrdersID)).ToList().Count;
-            var resultDeleteOneOrder = MessageBox.Show("Хотите удалить товар из корзины?",
-                                        "Системное сообщение",
-                                        MessageBoxButton.YesNo,
-                                        MessageBoxImage.Question);
-            if (resultDeleteOneOrder == MessageBoxResult.Yes)
+            try
             {
-                Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
-                FrameNavigate.DB.ProductsContains.Remove(productsContain);
-                FrameNavigate.DB.Orders.Remove(order);
-                FrameNavigate.DB.SaveChanges();
+                int CountProductContain = (FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID)).ToList().Count;
+                    Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
+                    List<ProductsContain> productsContain = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u).ToList();
+                    foreach(ProductsContain product in productsContain)
+                {
+                    FrameNavigate.DB.ProductsContains.Remove(product);
+                }
+                    FrameNavigate.DB.Orders.Remove(order);
+                    FrameNavigate.DB.SaveChanges();
+                    LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                    TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
+                MessageBox.Show("Заказ успешно оплачен!",
+                           "Системное сообщение",
+                           MessageBoxButton.OK,
+                           MessageBoxImage.Question);
+            }
+            catch
+            {
+                MessageBox.Show("Корзина пустая.",
+                                            "Системное сообщение",
+                                            MessageBoxButton.OK,
+                                            MessageBoxImage.Question);
                 LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
-                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
             }
         }
 

@@ -1,86 +1,148 @@
-﻿<Page x:Class="courseworkDemo.View.AdministrationPage.MainAdministratorPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:courseworkDemo.View.AdministrationPage"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="500"
-      d:DesignWidth="1000"
-      FontFamily="Consolas"
-      mc:Ignorable="d"
-      Title="MainAdministratorPage">
+﻿<Page
+    x:Class="courseworkDemo.View.AdministrationPage.MainAdministratorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:courseworkDemo.View.AdministrationPage"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainAdministratorPage"
+    d:DesignHeight="500"
+    d:DesignWidth="1000"
+    FontFamily="Consolas"
+    mc:Ignorable="d">
 
     <Grid>
         <Border
-            Width="980"
-            Height="480"
+            Width="1000"
+            Height="400"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Background="#FF4279A4"
+            Background="Gray"
+            CornerRadius="20"
             Effect="{StaticResource MaterialDesignElevationShadow16}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Menu
-                    Grid.Row="0"
-                    Background="#FF2779AD"
-                    Foreground="White"
-                    IsMainMenu="True"
-                    Style="{DynamicResource MaterialDesignMenu}">
-                    <Menu.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <DockPanel HorizontalAlignment="Stretch" />
-                        </ItemsPanelTemplate>
-                    </Menu.ItemsPanel>
-                    <MenuItem
-                        x:Name="MenuItemUser"
+                <StackPanel
+                    Grid.Row="1"
+                    VerticalAlignment="Center"
+                    Opacity="0.7">
+                    <Image
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Width="100"
+                        Height="100"
+                        Margin="10"
                         HorizontalAlignment="Center"
-                        Click="MenuItemUser_Click"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Информация о пользователях">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="White"
-                                Kind="People" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        x:Name="MenuItemOrders"
-                        Click="MenuItemOrders_Click"
-                        HorizontalAlignment="Left"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Информация о заказах">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="White"
-                                Kind="OrderBoolAscending" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                    <MenuItem
-                        x:Name="MenuItemProducts"
-                        HorizontalAlignment="Left"
-                        Click="MenuItemProduct_Click"
-                        Cursor="Hand"
-                        Effect="{StaticResource MaterialDesignElevationShadow16}"
-                        Header="Добавить товар">
-                        <MenuItem.Icon>
-                            <materialDesign:PackIcon
-                                Width="20"
-                                Height="20"
-                                Foreground="White"
-                                Kind="Package" />
-                        </MenuItem.Icon>
-                    </MenuItem>
-                </Menu>
+                        VerticalAlignment="Center"
+                        Source="/Images/icon_sousage.png" />
+                    <TextBlock
+                        Grid.Row="1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        FontFamily="Comic Sans MS"
+                        FontSize="25"
+                        Text="Aliot" />
+                </StackPanel>
+                <Border CornerRadius="25">
+                    <Menu
+                        Grid.Row="0"
+                        Background="Transparent"
+                        Foreground="White"
+                        IsMainMenu="True"
+                        Style="{DynamicResource MaterialDesignMenu}">
+                        <Menu.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <DockPanel HorizontalAlignment="Stretch" />
+                            </ItemsPanelTemplate>
+                        </Menu.ItemsPanel>
+                        <MenuItem
+                            x:Name="MenuItemUser"
+                            HorizontalAlignment="Center"
+                            Click="MenuItemUser_Click"
+                            Cursor="Hand"
+                            Effect="{StaticResource MaterialDesignShadowDepth3}"
+                            Header="Информация о пользователях">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon
+                                    Width="20"
+                                    Height="20"
+                                    Foreground="White"
+                                    Kind="People" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem
+                            x:Name="MenuItemOrders"
+                            HorizontalAlignment="Left"
+                            Click="MenuItemOrders_Click"
+                            Cursor="Hand"
+                            Effect="{StaticResource MaterialDesignElevationShadow16}"
+                            Header="Информация о заказах">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon
+                                    Width="20"
+                                    Height="20"
+                                    Foreground="White"
+                                    Kind="OrderBoolAscending" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem
+                            x:Name="MenuItemProducts"
+                            HorizontalAlignment="Left"
+                            Click="MenuItemProduct_Click"
+                            Cursor="Hand"
+                            Effect="{StaticResource MaterialDesignElevationShadow16}"
+                            Header="Добавить товар">
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon
+                                    Width="20"
+                                    Height="20"
+                                    Foreground="White"
+                                    Kind="Package" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem
+                            x:Name="MenuItemProductsList"
+                            HorizontalAlignment="Left"
+                            Click="MenuItemProductsList_Click"
+                            Cursor="Hand"
+                            Effect="{StaticResource MaterialDesignElevationShadow16}">
+                            <MenuItem.Header>
+                                <TextBlock Foreground="White" Text="Список товаров" />
+                            </MenuItem.Header>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon
+                                    Width="20"
+                                    Height="20"
+                                    Foreground="White"
+                                    Kind="CommentAdd" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem
+                            x:Name="MenuItemBack"
+                            HorizontalAlignment="Left"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Click="MenuItemBack_Click"
+                            Cursor="Hand"
+                            Effect="{StaticResource MaterialDesignElevationShadow16}">
+                            <MenuItem.Icon>
+                                <StackPanel Orientation="Vertical">
+                                    <materialDesign:PackIcon
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Width="20"
+                                    Height="20"
+                                    Foreground="White"
+                                    Kind="ArrowBack" />
+                                </StackPanel>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </Menu>
+                </Border>
                 <Grid x:Name="GridContentLoad" Grid.Row="1" />
             </Grid>
         </Border>

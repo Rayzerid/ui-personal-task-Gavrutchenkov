@@ -14,12 +14,19 @@ namespace courseworkDemo.Model
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.ProductsContains = new HashSet<ProductsContain>();
+        }
+    
         public int OrdersID { get; set; }
-        public int ProductsID { get; set; }
         public int UserID { get; set; }
         public System.DateTime Times { get; set; }
+        public string Status { get; set; }
     
-        public virtual Product Product { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductsContain> ProductsContains { get; set; }
     }
 }

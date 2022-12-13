@@ -12,5 +12,6 @@ namespace courseworkDemo.Core
     {
         public static Frame FrameObject { get; set; }
         public static courseworkDBEntities DB { get; set; }
+        public static int idUser { get; set; }
     }
 }

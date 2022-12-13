@@ -12,20 +12,13 @@ namespace courseworkDemo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class ProductsContain
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
-        {
-            this.ProductsContains = new HashSet<ProductsContain>();
-        }
-    
+        public int ProductsContainID { get; set; }
+        public int OrdersID { get; set; }
         public int ProductsID { get; set; }
-        public string ProductsName { get; set; }
-        public double ProductsPrice { get; set; }
-        public string ProductsImage { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductsContain> ProductsContains { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

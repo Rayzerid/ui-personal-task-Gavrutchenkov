@@ -41,7 +41,7 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                 FrameNavigate.DB.Products.Add(new Model.Product
                 {
                     ProductsName = TbProductsName.Text,
-                    ProductsPrice = TbPrice.Text
+                    ProductsPrice = double.Parse(TbPrice.Text)
                 });
 
                 await FrameNavigate.DB.SaveChangesAsync();

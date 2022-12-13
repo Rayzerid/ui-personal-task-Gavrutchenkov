@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="courseworkDemo.View.AdministrationPage.UserControls.AdminInfoOrdersControl"
+    x:Class="courseworkDemo.View.AdministrationPage.UserControls.AdminInfoProductsItemControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -25,7 +25,7 @@
             Background="White"
             Orientation="Horizontal">
             <DataGrid
-                x:Name="DataOrderInfo"
+                x:Name="DataProductsInfo"
                 Width="950"
                 Height="450"
                 AutoGenerateColumns="False"
@@ -42,7 +42,7 @@
                 IsReadOnly="True"
                 RowBackground="Gray">
                 <DataGrid.CellStyle>
-                    <Style TargetType="{x:Type DataGridCell}">
+                    <Style TargetType="DataGridCell">
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="Transparent" />
@@ -55,38 +55,29 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="Auto"
-                        Binding="{Binding Order.OrdersID}"
+                        Binding="{Binding ProductsID}"
                         FontSize="15"
                         Foreground="Black">
                         <DataGridTextColumn.Header>
-                            <TextBlock Foreground="Black" Text="ID заказа" />
+                            <TextBlock Foreground="Black" Text="Номер продукта" />
                         </DataGridTextColumn.Header>
                     </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
-                        Binding="{Binding Order.User.Login}"
+                        Binding="{Binding ProductsName}"
                         FontSize="15"
                         Foreground="Black">
                         <DataGridTextColumn.Header>
-                            <TextBlock Foreground="Black" Text="Логин заказчика" />
+                            <TextBlock Foreground="Black" Text="Название продукта" />
                         </DataGridTextColumn.Header>
                     </DataGridTextColumn>
                     <DataGridTextColumn
                         Width="Auto"
-                        Binding="{Binding Product.ProductsName}"
+                        Binding="{Binding ProductsPrice}"
                         FontSize="15"
                         Foreground="Black">
                         <DataGridTextColumn.Header>
-                            <TextBlock Foreground="Black" Text="Название заказаных продуктов" />
-                        </DataGridTextColumn.Header>
-                    </DataGridTextColumn>
-                    <DataGridTextColumn
-                        Width="Auto"
-                        Binding="{Binding Product.ProductsPrice}"
-                        FontSize="15"
-                        Foreground="Black">
-                        <DataGridTextColumn.Header>
-                            <TextBlock Foreground="Black" Text="Стоимость" />
+                            <TextBlock Foreground="Black" Text="Цена продуктов" />
                         </DataGridTextColumn.Header>
                     </DataGridTextColumn>
                     <DataGridTemplateColumn>
@@ -99,27 +90,9 @@
                                     Click="BtnDelete_Click"
                                     Foreground="Black"
                                     Style="{StaticResource MaterialDesignFlatLightButton}"
-                                    ToolTip="Удалить заказ">
+                                    ToolTip="Удалить товар">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="Remove" />
-                                    </StackPanel>
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn>
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button
-                                    x:Name="BtnAccept"
-                                    Background="Transparent"
-                                    BorderBrush="White"
-                                    Click="BtnAccept_Click"
-                                    Foreground="Black"
-                                    Style="{StaticResource MaterialDesignFlatLightButton}"
-                                    ToolTip="Одобрить заказ">
-                                    <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Check"/>
                                     </StackPanel>
                                 </Button>
                             </DataTemplate>

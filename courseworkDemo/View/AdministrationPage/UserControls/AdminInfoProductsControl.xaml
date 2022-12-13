@@ -10,17 +10,12 @@
     <Grid>
         <Border
             Width="500"
-            Height="400"
+            Height="300"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             CornerRadius="25"
+            Background="White"
             Effect="{StaticResource MaterialDesignElevationShadow16}">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFB0D633"/>
-                    <GradientStop Color="#FF2779AD" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="250" />
@@ -37,22 +32,22 @@
                            Text="Будьте внимательны при заполнение!"
                            TextWrapping="Wrap"
                                TextAlignment="Center"
-                               Foreground="White"/>
+                               Foreground="Black"/>
                     <StackPanel
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
                             Margin="0,7,5,0"
-                            Foreground="White"
+                            Foreground="Black"
                             Kind="Package" />
                         <TextBox
                             x:Name="TbProductsName"
-                            Width="180"
+                            Width="200"
                             materialDesign:HintAssist.Hint="Введите название продукта"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             FontSize="12"
-                            Foreground="White" />
+                            Foreground="Black" />
                     </StackPanel>
                     <StackPanel
                         Margin="0,5,0,0"
@@ -61,15 +56,15 @@
                         Orientation="Horizontal">
                         <materialDesign:PackIcon
                             Margin="0,5,5,0"
-                            Foreground="White"
+                            Foreground="Black"
                             Kind="Money100" />
                         <TextBox
                             x:Name="TbPrice"
-                            Width="180"
+                            Width="200"
                             materialDesign:HintAssist.Hint="Введите цену"
                             materialDesign:TextFieldAssist.HasClearButton="True"
                             FontSize="12"
-                            Foreground="White" />
+                            Foreground="Black" />
                     </StackPanel>
                     <StackPanel
                         Grid.Row="1"
@@ -79,10 +74,7 @@
                         Orientation="Horizontal">
                         <Button
                             x:Name="BtnRegistration"
-                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="-1"
-                            Background="#FF579048"
+                            Background="Black"
                             BorderThickness="0"
                             Click="BtnRegistration_Click"
                             Foreground="White"
@@ -98,10 +90,7 @@
                         <Button
                             x:Name="BtnBack"
                             Margin="10,0,0,0"
-                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                            materialDesign:ButtonProgressAssist.Value="-1"
-                            Background="#FF579048"
+                            Background="Black"
                             BorderThickness="0"
                             Click="BtnBack_Click"
                             Cursor="Hand"

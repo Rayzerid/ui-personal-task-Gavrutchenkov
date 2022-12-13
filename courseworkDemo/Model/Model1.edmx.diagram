@@ -4,14 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b8dd01801ed7459b9121ca4c04a180a9" Name="Diagram1">
-        <EntityTypeShape EntityType="courseworkDBModel.Order" Width="1.5" PointX="6.5" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="courseworkDBModel.Product" Width="1.5" PointX="9.125" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="courseworkDBModel.Role" Width="1.5" PointX="0.875" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="courseworkDBModel.User" Width="1.5" PointX="4" PointY="0.625" IsExpanded="true" />
-        <AssociationConnector Association="courseworkDBModel.FK_Orders_Products" ManuallyRouted="false" />
+      <Diagram DiagramId="dcd1eecfc1c54d53b96b69b88a4098da" Name="Diagram1">
+        <EntityTypeShape EntityType="courseworkDBModel.Order" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.Product" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.ProductsContain" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="courseworkDBModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="courseworkDBModel.FK_Orders_User" ManuallyRouted="false" />
-        <AssociationConnector Association="courseworkDBModel.FK_User_Role" />
+        <AssociationConnector Association="courseworkDBModel.FK_ProductsContain_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="courseworkDBModel.FK_ProductsContain_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="courseworkDBModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

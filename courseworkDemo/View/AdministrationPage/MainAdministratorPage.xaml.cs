@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using courseworkDemo.Core;
 using courseworkDemo.View.AdministrationPage.UserControls;
+using courseworkDemo.View.LoginPage;
 
 namespace courseworkDemo.View.AdministrationPage
 {
@@ -42,6 +44,17 @@ namespace courseworkDemo.View.AdministrationPage
         {
             GridContentLoad.Children.Clear();
             GridContentLoad.Children.Add(new AdminInfoProductsControl());
+        }
+
+        private void MenuItemProductsList_Click(object sender, RoutedEventArgs e)
+        {
+            GridContentLoad.Children.Clear();
+            GridContentLoad.Children.Add(new AdminInfoProductsItemControl());
+        }
+
+        private void MenuItemBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavigate.FrameObject.Navigate(new MainWindowLoginPage());
         }
     }
 }

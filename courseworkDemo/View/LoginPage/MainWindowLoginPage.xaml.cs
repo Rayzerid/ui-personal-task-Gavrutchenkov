@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using courseworkDemo.View.UsingPage;
 
 namespace courseworkDemo.View.LoginPage
 {
@@ -46,12 +47,14 @@ namespace courseworkDemo.View.LoginPage
                 }
                 else
                 {
+                    FrameNavigate.idUser = userModel.UserID;
                     switch(userModel.RoleID)
                     {
                         case 1:
                             FrameNavigate.FrameObject.Navigate(new MainAdministratorPage());
                             break;
                         case 2:
+                            FrameNavigate.FrameObject.Navigate(new MainUserPage());
                             break;
                     }
                 }

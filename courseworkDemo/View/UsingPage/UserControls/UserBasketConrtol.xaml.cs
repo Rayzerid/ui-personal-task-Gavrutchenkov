@@ -1,10 +1,8 @@
-﻿using System;
+﻿using courseworkDemo.Core;
+using courseworkDemo.Model;
+using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Data.OleDb;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,20 +14,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using courseworkDemo.Core;
-using courseworkDemo.Model;
 
-namespace courseworkDemo.View.AdministrationPage.UserControls
+namespace courseworkDemo.View.UsingPage.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для AdminInfoOrdersControl.xaml
+    /// Логика взаимодействия для UserBasketConrtol.xaml
     /// </summary>
-    public partial class AdminInfoOrdersControl : UserControl
+    public partial class UserBasketConrtol : UserControl
     {
-        public AdminInfoOrdersControl()
+        public UserBasketConrtol()
         {
             InitializeComponent();
-            DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsID).ToList();
+            LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+            TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()): "0";
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -40,49 +37,49 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                                         "Системное сообщение",
                                         MessageBoxButton.YesNo,
                                         MessageBoxImage.Question);
-            if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain == 1)
+            if(resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain == 1)
             {
                 Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
                 ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.Orders.Remove(order);
                 FrameNavigate.DB.SaveChanges();
-                DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
             }
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain != 1)
             {
                 ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.SaveChanges();
-                DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
             }
         }
 
-        private void BtnAccept_Click(object sender, RoutedEventArgs e)
+        private void BtnPay_Click(object sender, RoutedEventArgs e)
         {
             int idProduct = ((sender as Button)?.DataContext as ProductsContain).ProductsID;
-            int CountProductContain = (FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID)).ToList().Count;
+            int CountOrders = (FrameNavigate.DB.Orders.OrderBy(u => u.OrdersID)).ToList().Count;
             var resultDeleteOneOrder = MessageBox.Show("Хотите удалить товар из корзины?",
                                         "Системное сообщение",
                                         MessageBoxButton.YesNo,
                                         MessageBoxImage.Question);
-            if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain == 1)
+            if (resultDeleteOneOrder == MessageBoxResult.Yes)
             {
                 Order order = (from u in FrameNavigate.DB.Orders where u.UserID == FrameNavigate.idUser select u).SingleOrDefault();
                 ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
                 FrameNavigate.DB.ProductsContains.Remove(productsContain);
                 FrameNavigate.DB.Orders.Remove(order);
                 FrameNavigate.DB.SaveChanges();
-                DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
-            }
-            if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain != 1)
-            {
-                ProductsContain productsContain = (from u in FrameNavigate.DB.ProductsContains where u.ProductsID == idProduct && u.Order.UserID == FrameNavigate.idUser select u).FirstOrDefault();
-                FrameNavigate.DB.ProductsContains.Remove(productsContain);
-                FrameNavigate.DB.SaveChanges();
-                DataOrderInfo.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
             }
         }
 
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            FrameNavigate.FrameObject.Navigate(new MainUserPage());
+        }
     }
 }

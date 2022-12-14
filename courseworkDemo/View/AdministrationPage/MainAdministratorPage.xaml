@@ -53,6 +53,8 @@
                         Background="Transparent"
                         Foreground="White"
                         IsMainMenu="True"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
                         Style="{DynamicResource MaterialDesignMenu}">
                         <Menu.ItemsPanel>
                             <ItemsPanelTemplate>

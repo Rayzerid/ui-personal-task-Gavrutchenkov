@@ -82,5 +82,10 @@ namespace courseworkDemo.View.UsingPage
             GridContentLoad.Children.Clear();
             GridContentLoad.Children.Add(new UserBasketConrtol());
         }
+
+        private void BtnProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

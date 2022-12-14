@@ -35,16 +35,21 @@
             <Button
                 x:Name="btnHide"
                 Click="btnHide_Click"
-                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                Margin="0 0 5 0"
+                BorderBrush="White"
+                Style="{StaticResource  MaterialDesignFloatingActionMiniSecondaryDarkButton}"
+                Background="Black"
                 ToolTip="Свернуть приложение">
-                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Minus" />
+                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Minus" Width="20" Height="20" />
             </Button>
             <Button
                 x:Name="btnClose"
                 Click="btnClose_Click"
-                Style="{StaticResource MaterialDesignIconForegroundButton}"
+                BorderBrush="White"
+                Style="{StaticResource  MaterialDesignFloatingActionMiniSecondaryDarkButton}"
+                Background="Black"
                 ToolTip="Закрыть приложение">
-                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Power" />
+                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Power" Width="20" Height="20" />
             </Button>
         </StackPanel>
         <Frame

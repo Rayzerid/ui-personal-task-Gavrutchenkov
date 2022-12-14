@@ -28,12 +28,13 @@
                 <Border
                     Grid.Row="0"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    CornerRadius="25 0 0 25">
+                    VerticalAlignment="Center">
                     <StackPanel Orientation="Horizontal">
                         <TextBox
                             Name="TBoxSearch"
                             Width="225"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
                             materialDesign:HintAssist.Foreground="Black"
                             materialDesign:HintAssist.Hint="Введите название продукта"
                             materialDesign:TextFieldAssist.HasClearButton="True"
@@ -108,63 +109,65 @@
                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="550" Margin="20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30" />
-                                    <RowDefinition Height="30" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Width="300"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="Black"
-                                    Text="{Binding ProductsName, StringFormat={}Название: {0}}"
-                                    TextAlignment="Center"
-                                    TextWrapping="Wrap" />
-                                <TextBlock
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Width="300"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    FontSize="15"
-                                    Foreground="Black"
-                                    Text="{Binding ProductsPrice, StringFormat={}Цена: {0:N2} руб}"
-                                    TextAlignment="Center"
-                                    TextWrapping="Wrap" />
-                                <Button
-                                    x:Name="BtnAdd"
-                                    Grid.RowSpan="2"
-                                    Grid.Column="1"
-                                    Margin="10,0,0,0"
-                                    Background="Black"
-                                    BorderThickness="0"
-                                    Click="BtnAdd_Click"
-                                    Cursor="Hand"
-                                    Foreground="White"
-                                    Tag="{Binding ProductID}"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                    Style="{StaticResource MaterialDesignRaisedButton}">
-                                    <StackPanel
+                            <Border BorderBrush="Black" BorderThickness="1">
+                                <Grid Width="550" Margin="20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Width="300"
                                         HorizontalAlignment="Center"
                                         VerticalAlignment="Center"
-                                        Orientation="Horizontal">
-                                        <materialDesign:PackIcon Margin="0,2,5,0" Kind="Add" />
-                                        <TextBlock FontWeight="SemiBold" Text="Добавить в корзину" />
-                                    </StackPanel>
-                                </Button>
-                            </Grid>
+                                        FontSize="15"
+                                        Foreground="Black"
+                                        Text="{Binding ProductsName, StringFormat={}Название: {0}}"
+                                        TextAlignment="Center"
+                                        TextWrapping="Wrap" />
+                                    <TextBlock
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Width="300"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="15"
+                                        Foreground="Black"
+                                        Text="{Binding ProductsPrice, StringFormat={}Цена: {0:N2} руб}"
+                                        TextAlignment="Center"
+                                        TextWrapping="Wrap" />
+                                    <Button
+                                        x:Name="BtnAdd"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="1"
+                                        Margin="10,0,0,0"
+                                        Background="Black"
+                                        BorderThickness="0"
+                                        Click="BtnAdd_Click"
+                                        Cursor="Hand"
+                                        Foreground="White"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        Tag="{Binding ProductID}">
+                                        <StackPanel
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Orientation="Horizontal">
+                                            <materialDesign:PackIcon Margin="0,2,5,0" Kind="Add" />
+                                            <TextBlock FontWeight="SemiBold" Text="Добавить в корзину" />
+                                        </StackPanel>
+                                    </Button>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </Grid >
+            </Grid>
         </Border>
         <Grid x:Name="GridContentLoad" Grid.Row="1" />
     </Grid>

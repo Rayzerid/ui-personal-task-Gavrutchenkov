@@ -30,7 +30,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Margin="10">
-                    <Image Source="/Images/icon_sousage.png" Width="50"
+                    <Image Source="/Images/icon-sausage.png" Width="50"
                                Height="50" Grid.Column="1"
                            VerticalAlignment="Top" 
                            HorizontalAlignment="Right"

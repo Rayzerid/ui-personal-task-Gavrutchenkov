@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:courseworkDemo.View.AdministrationPage.UserControls"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    d:DesignHeight="500"
+    d:DesignHeight="450"
     d:DesignWidth="1000"
     mc:Ignorable="d">
     <UserControl.Resources>
@@ -27,7 +27,7 @@
             <DataGrid
                 x:Name="DataOrderInfo"
                 Width="950"
-                Height="450"
+                Height="325"
                 AutoGenerateColumns="False"
                 Background="White"
                 CanUserAddRows="False"

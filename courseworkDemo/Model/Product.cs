@@ -23,7 +23,6 @@ namespace courseworkDemo.Model
         public int ProductsID { get; set; }
         public string ProductsName { get; set; }
         public double ProductsPrice { get; set; }
-        public string ProductsImage { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductsContain> ProductsContains { get; set; }

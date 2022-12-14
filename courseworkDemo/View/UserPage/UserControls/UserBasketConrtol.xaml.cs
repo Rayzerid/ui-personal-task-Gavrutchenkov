@@ -26,7 +26,7 @@ namespace courseworkDemo.View.UsingPage.UserControls
         public UserBasketConrtol()
         {
             InitializeComponent();
-            LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
+            LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.Where(u => u.Order.UserID == FrameNavigate.idUser).ToList();
             TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()): "0";
         }
 

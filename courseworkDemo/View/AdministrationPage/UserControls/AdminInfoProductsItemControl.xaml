@@ -27,7 +27,7 @@
             <DataGrid
                 x:Name="DataProductsInfo"
                 Width="950"
-                Height="450"
+                Height="325"
                 AutoGenerateColumns="False"
                 Background="White"
                 CanUserAddRows="False"

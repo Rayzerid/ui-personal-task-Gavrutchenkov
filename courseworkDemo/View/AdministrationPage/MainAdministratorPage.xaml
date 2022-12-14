@@ -38,7 +38,7 @@
                         Margin="10"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Source="/Images/icon_sousage.png" />
+                        Source="/Images/icon-sausage.png" />
                     <TextBlock
                         Grid.Row="1"
                         HorizontalAlignment="Center"

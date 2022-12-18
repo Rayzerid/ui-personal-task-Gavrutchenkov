@@ -1,6 +1,8 @@
 ﻿using courseworkDemo.Core;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
             InitializeComponent();
         }
 
+        private byte[] imageDB;
+
         private async void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
             if(string.IsNullOrEmpty(TbProductsName.Text) || string.IsNullOrEmpty(TbPrice.Text))
@@ -41,7 +45,8 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                 FrameNavigate.DB.Products.Add(new Model.Product
                 {
                     ProductsName = TbProductsName.Text,
-                    ProductsPrice = double.Parse(TbPrice.Text)
+                    ProductsPrice = double.Parse(TbPrice.Text),
+                    ProductsImage = imageDB
                 });
 
                 await FrameNavigate.DB.SaveChangesAsync();
@@ -53,6 +58,16 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             FrameNavigate.FrameObject.Navigate(new MainAdministratorPage());
+        }
+
+        private void SelectImage(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.ShowDialog();
+            byte[] image_bytes = File.ReadAllBytes(openFileDialog.FileName);
+            Uri fileUri = new Uri(openFileDialog.FileName);
+            image.Source = new BitmapImage(fileUri);
+            imageDB = image_bytes;
         }
     }
 }

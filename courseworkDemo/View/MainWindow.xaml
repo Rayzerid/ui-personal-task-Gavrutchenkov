@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:courseworkDemo"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Aliot"
     Width="1000"
     Height="450"
     AllowsTransparency="True"
@@ -22,11 +22,7 @@
             <RowDefinition Height="50" />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Image
-            Grid.RowSpan="2"
-            Source="/Images/main-bg.jpg"
-            Stretch="UniformToFill" />
-        <StackPanel/>
+        <StackPanel />
         <StackPanel
             Margin="0,0,10,0"
             HorizontalAlignment="Right"
@@ -34,22 +30,30 @@
             Orientation="Horizontal">
             <Button
                 x:Name="btnHide"
-                Click="btnHide_Click"
-                Margin="0 0 5 0"
-                BorderBrush="White"
-                Style="{StaticResource  MaterialDesignFloatingActionMiniSecondaryDarkButton}"
+                Margin="0,0,5,0"
                 Background="Black"
+                BorderBrush="White"
+                Click="btnHide_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryDarkButton}"
                 ToolTip="Свернуть приложение">
-                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Minus" Width="20" Height="20" />
+                <materialDesign:PackIcon
+                    Width="20"
+                    Height="20"
+                    Foreground="#FFFEFEFE"
+                    Kind="Minus" />
             </Button>
             <Button
                 x:Name="btnClose"
-                Click="btnClose_Click"
-                BorderBrush="White"
-                Style="{StaticResource  MaterialDesignFloatingActionMiniSecondaryDarkButton}"
                 Background="Black"
+                BorderBrush="White"
+                Click="btnClose_Click"
+                Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryDarkButton}"
                 ToolTip="Закрыть приложение">
-                <materialDesign:PackIcon Foreground="#FFFEFEFE" Kind="Power" Width="20" Height="20" />
+                <materialDesign:PackIcon
+                    Width="20"
+                    Height="20"
+                    Foreground="#FFFEFEFE"
+                    Kind="Power" />
             </Button>
         </StackPanel>
         <Frame

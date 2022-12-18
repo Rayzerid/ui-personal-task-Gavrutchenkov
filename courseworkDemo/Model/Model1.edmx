@@ -21,6 +21,7 @@
           <Property Name="ProductsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductsName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductsPrice" Type="float" Nullable="false" />
+          <Property Name="ProductsImage" Type="image" />
         </EntityType>
         <EntityType Name="ProductsContain">
           <Key>
@@ -142,6 +143,7 @@
           <Property Name="ProductsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ProductsPrice" Type="Double" Nullable="false" />
           <NavigationProperty Name="ProductsContains" Relationship="Self.FK_ProductsContain_Products" FromRole="Products" ToRole="ProductsContain" />
+          <Property Name="ProductsImage" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="ProductsContain">
           <Key>
@@ -264,6 +266,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="courseworkDBModel.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductsImage" ColumnName="ProductsImage" />
                 <ScalarProperty Name="ProductsID" ColumnName="ProductsID" />
                 <ScalarProperty Name="ProductsName" ColumnName="ProductsName" />
                 <ScalarProperty Name="ProductsPrice" ColumnName="ProductsPrice" />

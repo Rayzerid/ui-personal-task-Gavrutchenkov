@@ -33,22 +33,24 @@ namespace courseworkDemo.View.LoginPage
 
         private async void BtnRegistration_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(TbLogin.Text) || string.IsNullOrEmpty(TbPhone.Text) || string.IsNullOrEmpty(TbEmail.Text) || string.IsNullOrEmpty(TbPassword.Text))
+            if (string.IsNullOrEmpty(TbLogin.Text) || string.IsNullOrEmpty(TbPhone.Text) || string.IsNullOrEmpty(TbEmail.Text) || string.IsNullOrEmpty(TbPassword.Text))
             {
                 MessageBox.Show("Все поля должны быть заполнены!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            FrameNavigate.DB.Users.Add(new Model.User
+            else
             {
-                Login = TbLogin.Text,
-                Phone = TbPhone.Text,
-                Email = TbEmail.Text,
-                Password = TbPassword.Text,
-                RoleID = 2
-            });
-
-            await FrameNavigate.DB.SaveChangesAsync();
-            MessageBox.Show("Учетная запись создана!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
-            FrameNavigate.FrameObject.Navigate(new MainWindowLoginPage());
+                FrameNavigate.DB.Users.Add(new Model.User
+                {
+                    Login = TbLogin.Text,
+                    Phone = TbPhone.Text,
+                    Email = TbEmail.Text,
+                    Password = TbPassword.Text,
+                    RoleID = 2
+                });
+                await FrameNavigate.DB.SaveChangesAsync();
+                MessageBox.Show("Учетная запись создана!", "Системное сообщение", MessageBoxButton.OK, MessageBoxImage.Information);
+                FrameNavigate.FrameObject.Navigate(new MainWindowLoginPage());
+            }
         }
     }
 }

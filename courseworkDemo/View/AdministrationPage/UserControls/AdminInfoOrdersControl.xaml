@@ -41,17 +41,14 @@
                 GridLinesVisibility="Horizontal"
                 IsReadOnly="True"
                 RowBackground="Gray">
-                <DataGrid.CellStyle>
-                    <Style TargetType="{x:Type DataGridCell}">
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="BorderThickness" Value="0" />
-                            </Trigger>
-                        </Style.Triggers>
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="BorderThickness" Value="0" />
                     </Style>
-                </DataGrid.CellStyle>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="Auto"
@@ -101,7 +98,7 @@
                                     Style="{StaticResource MaterialDesignFlatLightButton}"
                                     ToolTip="Удалить заказ">
                                     <StackPanel Orientation="Horizontal">
-                                        <materialDesign:PackIcon Kind="Remove" />
+                                        <materialDesign:PackIcon Kind="Remove"/>
                                     </StackPanel>
                                 </Button>
                             </DataTemplate>

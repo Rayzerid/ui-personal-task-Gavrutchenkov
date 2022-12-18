@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using courseworkDemo.View.LoginPage;
 using courseworkDemo.View.AdministrationPage.UserControls;
 using courseworkDemo.View.UsingPage.UserControls;
+using System.Data.Entity;
 
 namespace courseworkDemo.View.UsingPage
 {
@@ -29,6 +30,7 @@ namespace courseworkDemo.View.UsingPage
         {
             InitializeComponent();
             LViewProducts.ItemsSource = FrameNavigate.DB.Products.OrderBy(u => u.ProductsID).ToList();
+            List<string> a = (from u in FrameNavigate.DB.Users select u.Login).ToList();
         }
 
         private void UpdateProduct()

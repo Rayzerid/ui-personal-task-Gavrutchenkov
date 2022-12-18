@@ -27,7 +27,7 @@ namespace courseworkDemo.View.UsingPage.UserControls
         {
             InitializeComponent();
             LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.Where(u => u.Order.UserID == FrameNavigate.idUser).ToList();
-            TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()): "0";
+            TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum())+" руб": "0";
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
@@ -46,7 +46,7 @@ namespace courseworkDemo.View.UsingPage.UserControls
                 FrameNavigate.DB.Orders.Remove(order);
                 FrameNavigate.DB.SaveChanges();
                 LViewProductsBasket.ItemsSource = FrameNavigate.DB.ProductsContains.OrderBy(u => u.ProductsContainID).ToList();
-                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum()) : "0";
+                TbSum.Text = (from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Count() != 0 ? Convert.ToString((from u in FrameNavigate.DB.ProductsContains where u.Order.UserID == FrameNavigate.idUser select u.Product.ProductsPrice).Sum())+" руб" : "0";
             }
             if (resultDeleteOneOrder == MessageBoxResult.Yes && CountProductContain != 1)
             {

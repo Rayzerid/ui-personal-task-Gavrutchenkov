@@ -41,17 +41,14 @@
                 GridLinesVisibility="Horizontal"
                 IsReadOnly="True"
                 RowBackground="Gray">
-                <DataGrid.CellStyle>
+                <DataGrid.Resources>
                     <Style TargetType="DataGridCell">
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="BorderThickness" Value="0" />
-                            </Trigger>
-                        </Style.Triggers>
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="BorderThickness" Value="0" />
                     </Style>
-                </DataGrid.CellStyle>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn
                         Width="Auto"

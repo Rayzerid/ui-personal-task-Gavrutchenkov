@@ -37,10 +37,28 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
                                          MessageBoxImage.Question);
             if(result == MessageBoxResult.Yes)
             {
-                User user = (from u in FrameNavigate.DB.Users where u.UserID == idUser select u).SingleOrDefault();
-                FrameNavigate.DB.Users.Remove(user);
-                FrameNavigate.DB.SaveChanges();
-                DataUserInfo.ItemsSource = FrameNavigate.DB.Users.OrderBy(u => u.Login).ToList();
+                try
+                {
+                    int idOrder = (from u in FrameNavigate.DB.Orders where u.UserID == idUser select u.OrdersID).FirstOrDefault();
+                    List<ProductsContain> productsContains = (from u in FrameNavigate.DB.ProductsContains where u.OrdersID == idOrder select u).ToList();
+                    foreach(ProductsContain productsContain in productsContains)
+                    {
+                        FrameNavigate.DB.ProductsContains.Remove(productsContain);
+                    }    
+                    Order order = (from u in FrameNavigate.DB.Orders where u.OrdersID == idOrder select u).FirstOrDefault();
+                    User user = (from u in FrameNavigate.DB.Users where u.UserID == idUser select u).SingleOrDefault();
+                    FrameNavigate.DB.Orders.Remove(order);
+                    FrameNavigate.DB.Users.Remove(user);
+                    FrameNavigate.DB.SaveChanges();
+                    DataUserInfo.ItemsSource = FrameNavigate.DB.Users.OrderBy(u => u.Login).ToList();
+                }
+                catch
+                {
+                    User user = (from u in FrameNavigate.DB.Users where u.UserID == idUser select u).SingleOrDefault();
+                    FrameNavigate.DB.Users.Remove(user);
+                    FrameNavigate.DB.SaveChanges();
+                    DataUserInfo.ItemsSource = FrameNavigate.DB.Users.OrderBy(u => u.Login).ToList();
+                }
             }
         }
     }

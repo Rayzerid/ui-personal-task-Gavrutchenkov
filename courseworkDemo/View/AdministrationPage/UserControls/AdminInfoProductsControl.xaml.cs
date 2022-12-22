@@ -62,12 +62,16 @@ namespace courseworkDemo.View.AdministrationPage.UserControls
 
         private void SelectImage(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.ShowDialog();
-            byte[] image_bytes = File.ReadAllBytes(openFileDialog.FileName);
-            Uri fileUri = new Uri(openFileDialog.FileName);
-            image.Source = new BitmapImage(fileUri);
-            imageDB = image_bytes;
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.ShowDialog();
+                byte[] image_bytes = File.ReadAllBytes(openFileDialog.FileName);
+                Uri fileUri = new Uri(openFileDialog.FileName);
+                image.Source = new BitmapImage(fileUri);
+                imageDB = image_bytes;
+            }
+            catch { }
         }
     }
 }
